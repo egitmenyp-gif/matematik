@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; connect-src https://script.google.com https://script.googleusercontent.com; img-src 'self' data:; font-src 'self'; base-uri 'none'; form-action 'none'">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Matematik eğitmenin</title>
+<link rel="stylesheet" href="renkler.css">
+<link rel="stylesheet" href="stil.css">
+</head>
+<body>
+<div class="deneme" id="denemeSerit" hidden>DENEME MODU · eğitmen hazır cümlelerle konuşuyor, yapay zekâ modeli bağlı değil</div>
+<header class="ust">
+  <div class="ad" id="ad">Merhaba <span id="zaman"></span></div>
+  <div class="blok" id="blok">Bugün <span id="noktalar"></span> <span id="blokNo"></span></div>
+  <div class="mola" id="mola">☕ Mola: —</div>
+</header>
+<main class="ana">
+  <section class="soru" id="soruKart" aria-live="polite">
+    <div class="etiket" id="etiket">Soru</div>
+    <p class="hikaye" id="hikaye"></p>
+    <button class="devam" id="devam" type="button" hidden>Devam ▸</button>
+    <div class="sekil" id="sekil"></div>
+    <div class="siklar" id="siklar"></div>
+    <div class="kilit" id="kilit"></div>
+    <button class="sonraki" id="sonraki" type="button" hidden>Sıradaki soru ▸</button>
+  </section>
+  <aside class="sohbet" aria-label="Yapay zekâ eğitmenin">
+    <div class="egitmen"><div class="yuz" aria-hidden="true">🤖</div><div>Yapay zekâ eğitmenin<small>bir yapay zekâyım; adım adım birlikte çözeriz</small></div></div>
+    <div class="akis" id="akis" aria-live="polite"></div>
+    <form class="yaz" id="yaz" autocomplete="off">
+      <input class="giris" id="giris" type="text" maxlength="300" placeholder="Önce hikâyeyi oku…" disabled>
+      <button class="gonder" id="gonder" type="submit" aria-label="Gönder" disabled>→</button>
+    </form>
+    <div class="dugmeler">
+      <button class="d" id="dIpucu" type="button" disabled>💡 İpucu</button>
+      <button class="d" id="dAnlamadim" type="button" disabled>🤔 Anlamadım</button>
+      <button class="d" id="dKisa" type="button" disabled>✏️ Kısa hâlini göster</button>
+    </div>
+  </aside>
+</main>
+<div class="perde" id="perde"><div class="kutu-b"><h2 id="perdeBaslik">Merhaba!</h2><p id="perdeMetin"></p><button id="perdeDugme" type="button">Başla</button></div></div>
+<script src="ayar.js"></script>
+<script src="motor.js"></script>
+<script src="sablonlar.js"></script>
+<script src="icerik.js"></script>
+<script src="sekil.js"></script>
+<script src="arka.js"></script>
+<script src="index.js"></script>
+</body>
+</html>

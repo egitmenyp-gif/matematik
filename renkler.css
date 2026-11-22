@@ -1,0 +1,11 @@
+/* Renkler TEK yerden değişir. Kaynak: icerik/RENKLER.md (Çıra, 19.11.2026). Her anlam rengi tek anlam taşır;
+   renk tek başına anlam vermez, her durumda simge + kelime de vardır. Yanlışta kırmızı YOK. */
+:root{
+  --zemin:#F6F3EC; --kart:#FFFFFF; --metin:#1E2330; --metin-soluk:#5B6070;
+  --sohbet:#1E2330; --sohbet-balon:#2A3040; --sohbet-metin:#E9ECF2; --sohbet-soluk:#9AA0AE;
+  --notr:#5B6070; --notr-acik:#E9ECF2; --cizgi:#E2DDD2;
+  --vurgu:#FFE7A8; --vurgu-cizgi:#A87200; --vurgu-sekil:#E0A800;
+  --istenen:#DCE8FB; --istenen-cizgi:#3B6FD8;
+  --dogru:#DDF3E4; --dogru-cizgi:#23874B; --dogru-metin:#1B6E3C;
+  --tekrar:#FDEBDD; --tekrar-cizgi:#C8620E; --tekrar-metin:#9A4A0B;
+}

@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; connect-src https://script.google.com https://script.googleusercontent.com; img-src 'self' data:; font-src 'self'; base-uri 'none'; form-action 'none'">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>Veli sayfası</title>
+<link rel="stylesheet" href="renkler.css">
+<link rel="stylesheet" href="veli.css">
+</head>
+<body>
+<div class="deneme" id="ornekSerit" hidden>ÖRNEK VERİ · bu ekran gerçek değil, yalnızca görünümü göstermek için</div>
+
+<section class="giris-ekran" id="girisEkran">
+  <form class="kutu" id="girisForm" autocomplete="off">
+    <h1>Veli sayfası</h1>
+    <p class="soluk" id="girisAciklama">PIN'inizi girin.</p>
+    <label for="pin">PIN</label>
+    <input id="pin" type="password" inputmode="numeric" autocomplete="off" maxlength="20">
+    <button class="birincil" id="girisDugme" type="submit">Giriş</button>
+    <p class="hata" id="girisHata" role="alert" hidden></p>
+  </form>
+  <div class="kutu" id="kodKutu" hidden>
+    <h1>Bu telefonu onaylayın</h1>
+    <p class="soluk">Bu telefon ilk kez giriyor. Tablodaki menüden <b>Matematik eğitmeni → Veli cihazı onayla</b> deyip şu kodu yazın:</p>
+    <p class="kod" id="kod" aria-live="polite">----</p>
+    <button class="birincil" id="kodTamam" type="button">Onayladım, girişi dene</button>
+  </div>
+</section>
+
+<div id="uygulama" hidden>
+  <header class="ust">
+    <h1 id="baslik">Veli sayfası</h1>
+    <button class="ikincil" id="cikis" type="button">Çıkış</button>
+  </header>
+  <nav class="sekmeler" aria-label="Bölümler">
+    <button type="button" data-sekme="bugun" class="sekme secili">Bugün</button>
+    <button type="button" data-sekme="ilerleme" class="sekme">İlerleme</button>
+    <button type="button" data-sekme="konusma" class="sekme">Konuşmalar</button>
+    <button type="button" data-sekme="ayar" class="sekme">Ayarlar</button>
+  </nav>
+  <main>
+    <section id="bolum-bugun">
+      <div class="sayilar">
+        <div class="sayi"><b id="sDakika">–</b><span>dakika</span></div>
+        <div class="sayi"><b id="sSoru">–</b><span>soru</span></div>
+        <div class="sayi"><b id="sDogru">–</b><span id="sDogruEtiket">doğru</span></div>
+      </div>
+      <p class="soluk" id="sNot"></p>
+      <div class="uyari-kutu" id="uyariKutu" hidden></div>
+      <h2>Gece değerlendirmesi</h2>
+      <div class="kart" id="geceKart"><p class="soluk">Henüz gece değerlendirmesi yapılmadı.</p></div>
+    </section>
+    <section id="bolum-ilerleme" hidden>
+      <h2>Konu konu ilerleme</h2>
+      <p class="soluk" id="ilerlemeNot"></p>
+      <p class="soluk" id="ilerlemeSinav"></p>
+      <div id="ilerlemeListe" class="liste"></div>
+    </section>
+    <section id="bolum-konusma" hidden>
+      <h2 id="gunListeBaslik">Son 30 gün</h2>
+      <div id="gunListe" class="liste"></div>
+      <div id="gunDetay" hidden>
+        <button class="ikincil" id="gunGeri" type="button">‹ Günlere dön</button>
+        <h2 id="gunBaslik"></h2>
+        <div id="uyariListe"></div>
+        <div id="mesajListe" class="akis"></div>
+      </div>
+    </section>
+    <section id="bolum-ayar" hidden>
+      <form id="ayarForm" class="kutu genis" autocomplete="off">
+        <h2>Çalışma saatleri</h2>
+        <div class="satir"><label for="a_saat_bas">Başlangıç</label><input id="a_saat_bas" name="saat_bas" inputmode="numeric" placeholder="17.00"></div>
+        <div class="satir"><label for="a_saat_bit">Bitiş</label><input id="a_saat_bit" name="saat_bit" inputmode="numeric" placeholder="19.00"></div>
+        <div class="satir"><label for="a_blok_dk">Blok (dk)</label><input id="a_blok_dk" name="blok_dk" inputmode="numeric"></div>
+        <div class="satir"><label for="a_mola_dk">Mola (dk)</label><input id="a_mola_dk" name="mola_dk" inputmode="numeric"></div>
+        <div class="satir"><label for="a_gunluk_dk">Günlük en çok (dk)</label><input id="a_gunluk_dk" name="gunluk_dk" inputmode="numeric"></div>
+        <h2>Gece raporu</h2>
+        <div class="satir"><label for="a_veli_eposta">E-posta</label><input id="a_veli_eposta" name="veli_eposta" type="email" autocomplete="off"></div>
+        <div class="satir"><label for="a_gece_saat">Gönderim saati</label><input id="a_gece_saat" name="gece_saat" inputmode="numeric" placeholder="21"></div>
+        <h2>Okul</h2>
+        <div class="satir"><label for="a_okul_konusu">Okuldaki konu</label><select id="a_okul_konusu" name="okul_konusu"><option value="">Bilmiyorum / boş</option></select></div>
+        <h2>Çocuk</h2>
+        <div class="satir"><label for="a_takma_ad">Takma ad</label><input id="a_takma_ad" name="takma_ad" maxlength="20"></div>
+        <div class="satir"><label for="a_ilgi_alani">İlgi alanı</label><input id="a_ilgi_alani" name="ilgi_alani" maxlength="40" placeholder="örn. futbol, uzay"></div>
+        <p class="hata" id="ayarHata" role="alert" hidden></p>
+        <p class="tamam" id="ayarTamam" role="status" hidden>Kaydedildi.</p>
+        <button class="birincil" type="submit">Kaydet</button>
+      </form>
+    </section>
+  </main>
+</div>
+<script src="ayar.js"></script>
+<script src="veli.js"></script>
+</body>
+</html>
