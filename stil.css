@@ -10,6 +10,9 @@ button:disabled{cursor:default}
 .blok{display:flex;gap:10px;align-items:center;font-size:15px;color:var(--notr);white-space:nowrap}
 .nokta{display:inline-block;vertical-align:middle;width:44px;height:10px;border-radius:6px;background:var(--cizgi)}
 .nokta.dolu{background:var(--notr)}
+.sag{display:flex;align-items:center;gap:10px}
+.tamekran{font-size:13px;color:var(--notr);padding:6px 10px;border-radius:12px;opacity:.75;white-space:nowrap}
+.tamekran:hover,.tamekran:focus-visible{opacity:1;background:var(--notr-acik)}
 .mola{background:var(--kart);border-radius:20px;padding:8px 16px;font-size:15px;color:var(--notr);box-shadow:0 1px 0 var(--cizgi);white-space:nowrap}
 .ana{flex:1;min-height:0;display:grid;grid-template-columns:minmax(0,1fr) minmax(340px,440px);gap:24px;padding:0 36px 24px}
 .soru{background:var(--kart);border-radius:28px;padding:28px 40px;box-shadow:0 2px 0 var(--cizgi);display:flex;flex-direction:column;min-height:0;min-width:0}
@@ -90,6 +93,7 @@ button:disabled{cursor:default}
   .ust{height:auto;flex-wrap:wrap;padding:10px 14px;gap:8px}
   .ad{font-size:18px}
   .blok,.mola{white-space:normal;flex-wrap:wrap}
+  .sag{flex-wrap:wrap}
   .nokta{width:28px}
   .ana{display:flex;flex-direction:column;flex:none;padding:0 12px 16px;gap:12px}
   .soru{padding:18px 16px;border-radius:22px}

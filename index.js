@@ -298,5 +298,17 @@
   $('dIpucu').addEventListener('click', ipucuIste);
   $('dAnlamadim').addEventListener('click', anlamadim);
   $('dKisa').addEventListener('click', kisaGoster);
+  // Tam ekran (kurucu 22.11: çocuğun dikkati dağılmasın; F11'i herkes bilmiyor). Desteklemeyen tarayıcıda düğme gizli kalır.
+  (function () {
+    var b = $('tamEkran'), k = document.documentElement;
+    if (!b || !document.fullscreenEnabled || !k.requestFullscreen) return;
+    b.hidden = false;
+    var yaz = function () { b.textContent = document.fullscreenElement ? '⛶ Küçült' : '⛶ Tam ekran'; };
+    b.addEventListener('click', function () {
+      var s = document.fullscreenElement ? document.exitFullscreen() : k.requestFullscreen();
+      if (s && s.catch) s.catch(function () {});
+    });
+    document.addEventListener('fullscreenchange', yaz);
+  })();
   basla();
 })();
