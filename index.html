@@ -13,7 +13,7 @@
 <header class="ust">
   <div class="ad" id="ad">Merhaba <span id="zaman"></span></div>
   <div class="blok" id="blok">Bugün <span id="noktalar"></span> <span id="blokNo"></span></div>
-  <div class="sag"><div class="mola" id="mola">☕ Mola: —</div><button class="tamekran" id="tamEkran" type="button" hidden title="Tam ekran: başka bir şey görünmesin">⛶ Tam ekran</button></div>
+  <div class="sag"><div class="mola" id="mola">☕ Mola: —</div><button class="tamekran" id="konuDugme" type="button" hidden title="Bu konunun kısa anlatımını yeniden aç">📖 Konu</button><button class="tamekran" id="tanitimDugme" type="button" title="Neyin ne olduğunu yeniden göster">❓ Tanıtım</button><button class="tamekran" id="tamEkran" type="button" hidden title="Tam ekran: başka bir şey görünmesin">⛶ Tam ekran</button></div>
 </header>
 <main class="ana">
   <section class="soru" id="soruKart" aria-live="polite">
@@ -40,6 +40,24 @@
   </aside>
 </main>
 <div class="perde" id="perde"><div class="kutu-b"><h2 id="perdeBaslik">Merhaba!</h2><p id="perdeMetin"></p><button id="perdeDugme" type="button">Başla</button></div></div>
+<div class="anlatim" id="anlatim" hidden>
+  <div class="kart-a" role="dialog" aria-modal="true" aria-labelledby="aBaslik">
+    <div class="aust"><span>📖 Konu anlatımı</span><span id="aSayi"></span></div>
+    <h2 id="aBaslik"></h2>
+    <div class="aresim" id="aResim"></div>
+    <p id="aMetin"></p>
+    <p class="anot" id="aNot" hidden>Unutursan yukarıdaki 📖 Konu düğmesine bas, bu anlatım yeniden açılır.</p>
+    <div class="adug"><button class="ageri" id="aGeri" type="button">◂ Geri</button><button class="aileri" id="aIleri" type="button">İleri ▸</button></div>
+  </div>
+</div>
+<div class="tanitim" id="tanitim" hidden>
+  <div class="delik" id="tDelik"></div>
+  <div class="balon" id="tBalon" role="dialog" aria-modal="true" aria-labelledby="tMetin">
+    <div class="tsayi" id="tSayi"></div>
+    <p id="tMetin"></p>
+    <div class="tdug"><button class="tgec" id="tGec" type="button">Geç</button><button class="tileri" id="tIleri" type="button">İleri ▸</button></div>
+  </div>
+</div>
 <script src="ayar.js"></script>
 <script src="motor.js"></script>
 <script src="sablonlar.js"></script>

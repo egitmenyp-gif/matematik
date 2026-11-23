@@ -436,6 +436,793 @@ window.MATEMATIK_SABLONLAR = [
   ]
  },
  {
+  "id": "kesir-anlami-direnc-kutusu-01",
+  "konu": "kesir-anlami",
+  "konu_adi": "Kesrin anlamı",
+  "kazanim": "onkosul-5",
+  "zorluk": 1,
+  "adimlar": [
+   "iliski"
+  ],
+  "parametreler": {
+   "toplam": {
+    "degerler": [
+     "7",
+     "11",
+     "13"
+    ]
+   },
+   "kirmizi": {
+    "min": 2,
+    "max": 10,
+    "adim": 1
+   }
+  },
+  "kisitlar": [
+   "kirmizi < toplam",
+   "kirmizi * 2 != toplam + 1",
+   "kirmizi * 2 != toplam - 1"
+  ],
+  "gosterim": "kesir",
+  "hikaye": [
+   "Kâşif'in kutusunda {toplam} tane direnç var.",
+   "Bunlardan {kirmizi} tanesinin rengi kırmızı, gerisi mavi."
+  ],
+  "istenen": "Dirençlerin kaçta kaçı kırmızı?",
+  "vurgu": [
+   "{toplam} tane direnç",
+   "{kirmizi} tanesinin"
+  ],
+  "cevap": "kirmizi/toplam",
+  "birim": "",
+  "celdiriciler": [
+   {
+    "ifade": "kirmizi/(toplam-kirmizi)",
+    "hata": "parcayi-parcayla-oranladi"
+   },
+   {
+    "ifade": "(toplam-kirmizi)/toplam",
+    "hata": "istenen-farkli"
+   },
+   {
+    "ifade": "toplam/kirmizi",
+    "hata": "pay-payda-karisti"
+   }
+  ],
+  "kisa_hali": "{toplam} direnç var, {kirmizi} tanesi kırmızı. Kırmızılar kaçta kaç?",
+  "ipuclari": [
+   "Bütün kaç tane? Seçilen parça kaç tane?",
+   "Kesrin altı (payda) bütündür: kutudaki dirençlerin hepsi.",
+   "Mavileri değil, kutunun tamamını paydaya yaz."
+  ],
+  "ucuncu_deneme": [
+   "Birlikte kuralım. Kutuda toplam kaç direnç var? Onu paydaya yaz.",
+   "Kırmızı olanlar kaç tane? Onu paya yaz.",
+   "Kesri oku ve şıklara yeniden bak."
+  ],
+  "yazan": "Çıra (Opus 5.5), 22.11.2026; seviye testi analizine göre (oran kökü)"
+ },
+ {
+  "id": "kesir-anlami-iki-renk-led-01",
+  "konu": "kesir-anlami",
+  "konu_adi": "Kesrin anlamı",
+  "kazanim": "onkosul-5",
+  "zorluk": 1,
+  "adimlar": [
+   "iliski",
+   "hesap"
+  ],
+  "parametreler": {
+   "toplam": {
+    "degerler": [
+     "7",
+     "11",
+     "13"
+    ]
+   },
+   "mavi": {
+    "min": 2,
+    "max": 10,
+    "adim": 1
+   }
+  },
+  "kisitlar": [
+   "mavi < toplam - 1",
+   "mavi * 2 != toplam + 1",
+   "mavi * 2 != toplam - 1"
+  ],
+  "turetilen": {
+   "sari": "toplam - mavi"
+  },
+  "gosterim": "kesir",
+  "hikaye": [
+   "Kâşif bir oyuncak için ışık dizisi yapıyor.",
+   "Diziye {sari} sarı ve {mavi} mavi LED taktı."
+  ],
+  "istenen": "Dizideki LED'lerin kaçta kaçı mavi?",
+  "vurgu": [
+   "{sari} sarı",
+   "{mavi} mavi LED"
+  ],
+  "cevap": "mavi/toplam",
+  "birim": "",
+  "celdiriciler": [
+   {
+    "ifade": "mavi/sari",
+    "hata": "parcayi-parcayla-oranladi"
+   },
+   {
+    "ifade": "sari/toplam",
+    "hata": "istenen-farkli"
+   },
+   {
+    "ifade": "toplam/mavi",
+    "hata": "pay-payda-karisti"
+   }
+  ],
+  "kisa_hali": "{sari} sarı, {mavi} mavi LED. Mavi olanlar kaçta kaç?",
+  "ipuclari": [
+   "Bütün burada ne? Dizide toplam kaç LED var?",
+   "Önce sarı ve mavi LED'leri toplayıp bütünü bul.",
+   "Payda sarılar değil, dizinin tamamıdır."
+  ],
+  "ucuncu_deneme": [
+   "Birlikte kuralım. {sari} + {mavi} kaç eder? Bu, bütündür; paydaya yaz.",
+   "Mavi LED'ler kaç tane? Paya yaz.",
+   "Kesri oku ve şıklara yeniden bak."
+  ],
+  "yazan": "Çıra (Opus 5.5), 22.11.2026; seviye testi analizine göre (oran kökü)"
+ },
+ {
+  "id": "kesir-problem-direnc-adet-01",
+  "konu": "kesir-problem",
+  "konu_adi": "Kesirlerle problem",
+  "kazanim": "MAT.6.1.7",
+  "zorluk": 1,
+  "adimlar": [
+   "iliski",
+   "hesap"
+  ],
+  "parametreler": {
+   "payda": {
+    "degerler": [
+     "5",
+     "7",
+     "8"
+    ]
+   },
+   "pay": {
+    "min": 2,
+    "max": 5,
+    "adim": 1
+   },
+   "k": {
+    "min": 3,
+    "max": 9,
+    "adim": 1
+   }
+  },
+  "kisitlar": [
+   "pay < payda",
+   "pay * 2 != payda",
+   "pay * 4 != payda",
+   "payda - pay >= 2",
+   "k != pay",
+   "k * (payda - pay) != pay"
+  ],
+  "turetilen": {
+   "toplam": "payda * k",
+   "kirmizi": "k * pay"
+  },
+  "hikaye": [
+   "Kâşif'in kutusunda {toplam} tane direnç var.",
+   "Dirençlerin {pay}/{payda} kadarı kırmızı."
+  ],
+  "istenen": "Kutuda kaç tane kırmızı direnç var?",
+  "vurgu": [
+   "{toplam} tane direnç",
+   "{pay}/{payda} kadarı"
+  ],
+  "cevap": "kirmizi",
+  "birim": "tane",
+  "celdiriciler": [
+   {
+    "ifade": "pay",
+    "hata": "kesri-sayi-sandi"
+   },
+   {
+    "ifade": "k",
+    "hata": "ilk-adimda-durdu"
+   },
+   {
+    "ifade": "toplam - kirmizi",
+    "hata": "istenen-farkli"
+   }
+  ],
+  "kisa_hali": "{toplam} direnç. {pay}/{payda} kadarı kırmızı. Kaç kırmızı var?",
+  "ipuclari": [
+   "{pay}/{payda} bir sayı değil, bütünün bir parçasıdır. Bütün burada kaç direnç?",
+   "{toplam} direnci {payda} eşit gruba ayır. Bir grupta kaç direnç olur?",
+   "Bir grubu buldun mu? Kırmızılar {pay} grup."
+  ],
+  "ucuncu_deneme": [
+   "Birlikte kuralım. {toplam} ÷ {payda} kaç eder? Bu, bir gruptur.",
+   "Kırmızılar {pay} grup. Bir grubu {pay} ile çarp.",
+   "Şıklara yeniden bak."
+  ],
+  "yazan": "Çıra (Opus 5.5), 22.11.2026; seviye testi analizine göre (kesri-sayi-sandi)"
+ },
+ {
+  "id": "kesir-problem-kablo-tamami-01",
+  "konu": "kesir-problem",
+  "konu_adi": "Kesirlerle problem",
+  "kazanim": "MAT.6.1.7",
+  "zorluk": 3,
+  "adimlar": [
+   "iliski",
+   "hesap",
+   "hesap"
+  ],
+  "parametreler": {
+   "payda": {
+    "degerler": [
+     "5",
+     "7"
+    ]
+   },
+   "pay": {
+    "min": 2,
+    "max": 5,
+    "adim": 1
+   },
+   "bir": {
+    "min": 4,
+    "max": 12,
+    "adim": 2
+   }
+  },
+  "kisitlar": [
+   "pay <= payda - 2"
+  ],
+  "turetilen": {
+   "parca": "bir * pay",
+   "tamami": "bir * payda"
+  },
+  "hikaye": [
+   "Kâşif bir kablonun {pay}/{payda} kadarını kesip robotuna bağladı.",
+   "Kestiği parça {parca} cm uzunluğunda."
+  ],
+  "istenen": "Kablonun tamamı kaç cm idi?",
+  "vurgu": [
+   "{pay}/{payda} kadarını",
+   "{parca} cm"
+  ],
+  "cevap": "tamami",
+  "birim": "cm",
+  "celdiriciler": [
+   {
+    "ifade": "bir",
+    "hata": "ilk-adimda-durdu"
+   },
+   {
+    "ifade": "parca * payda",
+    "hata": "payi-unuttu"
+   },
+   {
+    "ifade": "bir * (payda - pay)",
+    "hata": "istenen-farkli"
+   }
+  ],
+  "kisa_hali": "Kablonun {pay}/{payda} kadarı {parca} cm. Tamamı kaç cm?",
+  "ipuclari": [
+   "{parca} cm bütün değil, bütünün {pay} parçası.",
+   "Önce bir parçayı bul: {parca} cm {pay} parçaya eşit bölünür.",
+   "Bütün kaç parça? Bir parçayı o sayıyla çarp."
+  ],
+  "ucuncu_deneme": [
+   "Birlikte kuralım. {parca} ÷ {pay} kaç eder? Bu, bir parçadır.",
+   "Kablonun tamamı {payda} parça. Bir parçayı {payda} ile çarp.",
+   "Şıklara yeniden bak."
+  ],
+  "yazan": "Çıra (Opus 5.5), 22.11.2026; seviye testi analizine göre (oran kökü)"
+ },
+ {
+  "id": "karisik-pil-kalan-yuzde-01",
+  "konu": "karisik-problem",
+  "konu_adi": "Kesir, ondalık ve yüzde birlikte",
+  "kazanim": "MAT.6.1.7",
+  "zorluk": 2,
+  "adimlar": [
+   "iliski",
+   "hesap",
+   "hesap"
+  ],
+  "parametreler": {
+   "payda": {
+    "degerler": [
+     "4",
+     "5",
+     "10",
+     "20",
+     "25"
+    ]
+   },
+   "pay": {
+    "min": 1,
+    "max": 19,
+    "adim": 1
+   }
+  },
+  "kisitlar": [
+   "pay < payda",
+   "pay * 2 != payda",
+   "pay * 100 != payda * (100 - pay)",
+   "payda - pay != pay * 100 / payda",
+   "payda - pay != 100 - pay * 100 / payda"
+  ],
+  "turetilen": {
+   "kullanilan": "pay * 100 / payda"
+  },
+  "hikaye": [
+   "Kâşif'in robotunun pili sabah tam doluydu.",
+   "Gün boyunca pilin {pay}/{payda} kadarını kullandı."
+  ],
+  "istenen": "Pilin yüzde kaçı kaldı?",
+  "vurgu": [
+   "tam doluydu",
+   "{pay}/{payda} kadarını"
+  ],
+  "cevap": "100 - kullanilan",
+  "birim": "",
+  "celdiriciler": [
+   {
+    "ifade": "kullanilan",
+    "hata": "istenen-farkli"
+   },
+   {
+    "ifade": "100 - pay",
+    "hata": "kesri-sayi-sandi"
+   },
+   {
+    "ifade": "payda - pay",
+    "hata": "kesri-sayi-sandi"
+   }
+  ],
+  "kisa_hali": "Pil tam doluydu. {pay}/{payda} kadarı kullanıldı. Yüzde kaçı kaldı?",
+  "ipuclari": [
+   "Tam dolu pil yüzde kaçtır?",
+   "{pay}/{payda} kesrini paydası 100 olan bir kesre çevir: üstü ve altı aynı sayıyla çarpılır.",
+   "Kullanılanı buldun mu? Soru kalanı soruyor."
+  ],
+  "ucuncu_deneme": [
+   "Birlikte kuralım. {payda} kaç ile çarpılınca 100 olur? Payı da o sayıyla çarp: kullanılan yüzde budur.",
+   "Tam dolu pil %100. Kullanılanı 100'den çıkar.",
+   "Şıklara yeniden bak."
+  ],
+  "yazan": "Çıra (Opus 5.5), 22.11.2026; seviye testi analizine göre (kesir-yüzde köprüsü)"
+ },
+ {
+  "id": "yuzde-yuz-isik-01",
+  "konu": "yuzde-problem",
+  "konu_adi": "Yüzdelerle problem",
+  "kazanim": "MAT.6.1.7",
+  "zorluk": 1,
+  "adimlar": [
+   "iliski",
+   "hesap"
+  ],
+  "parametreler": {
+   "yanan": {
+    "min": 15,
+    "max": 85,
+    "adim": 1
+   }
+  },
+  "kisitlar": [
+   "yanan != 50",
+   "yanan * 10 != 1000 - yanan * 10"
+  ],
+  "turetilen": {
+   "sonuk": "100 - yanan"
+  },
+  "hikaye": [
+   "Kâşif'in ışık panelinde tam 100 küçük ışık var.",
+   "Şu an bunlardan {yanan} tanesi yanıyor."
+  ],
+  "istenen": "Paneldeki ışıkların yüzde kaçı yanmıyor?",
+  "vurgu": [
+   "tam 100 küçük ışık",
+   "{yanan} tanesi yanıyor"
+  ],
+  "cevap": "sonuk",
+  "birim": "",
+  "celdiriciler": [
+   {
+    "ifade": "yanan",
+    "hata": "istenen-farkli"
+   },
+   {
+    "ifade": "sonuk / 100",
+    "hata": "yuzde-kesir-karisti"
+   },
+   {
+    "ifade": "100",
+    "hata": "butunu-verdi"
+   }
+  ],
+  "kisa_hali": "100 ışığın {yanan} tanesi yanıyor. Yüzde kaçı yanmıyor?",
+  "ipuclari": [
+   "Yüzde, 'her 100 taneden kaç tane' demektir.",
+   "Burada bütün zaten 100. Yanmayan ışık kaç tane?",
+   "100 ışıktan kaçı yanmıyorsa, yüzdesi de odur."
+  ],
+  "ucuncu_deneme": [
+   "Birlikte kuralım. 100 ışıktan {yanan} tanesi yanıyor. Kaç tanesi yanmıyor?",
+   "Bütün 100 olduğu için bu sayı aynı zamanda yüzdedir.",
+   "Şıklara yeniden bak."
+  ],
+  "yazan": "Çıra (Opus 5.5), 22.11.2026; seviye testi analizine göre (yüzde = 100'de kaç)"
+ },
+ {
+  "id": "yuzde-senlik-ogrenci-01",
+  "konu": "yuzde-problem",
+  "konu_adi": "Yüzdelerle problem",
+  "kazanim": "MAT.6.1.7",
+  "zorluk": 1,
+  "adimlar": [
+   "iliski",
+   "hesap"
+  ],
+  "parametreler": {
+   "toplam": {
+    "degerler": [
+     "200",
+     "300",
+     "400",
+     "500",
+     "600",
+     "800"
+    ]
+   },
+   "oran": {
+    "degerler": [
+     "10",
+     "20",
+     "25",
+     "30",
+     "40"
+    ]
+   }
+  },
+  "kisitlar": [
+   "toplam * oran / 100 != oran"
+  ],
+  "turetilen": {
+   "robotcu": "toplam * oran / 100",
+   "bir_yuzde": "toplam / 100"
+  },
+  "hikaye": [
+   "Bir bilim şenliğine {toplam} öğrenci katıldı.",
+   "Öğrencilerin %{oran} kadarı robot yarışmasına girdi."
+  ],
+  "istenen": "Robot yarışmasına kaç öğrenci girdi?",
+  "vurgu": [
+   "{toplam} öğrenci",
+   "%{oran} kadarı"
+  ],
+  "cevap": "robotcu",
+  "birim": "öğrenci",
+  "celdiriciler": [
+   {
+    "ifade": "oran",
+    "hata": "yuzdeyi-sayi-sandi"
+   },
+   {
+    "ifade": "toplam - robotcu",
+    "hata": "istenen-farkli"
+   },
+   {
+    "ifade": "bir_yuzde",
+    "hata": "ilk-adimda-durdu"
+   }
+  ],
+  "kisa_hali": "{toplam} öğrenci. %{oran} kadarı yarıştı. Kaç öğrenci?",
+  "ipuclari": [
+   "%{oran}, {oran} öğrenci demek değildir. 'Her 100 öğrenciden {oran} tanesi' demektir.",
+   "{toplam} öğrencide kaç tane 100 var?",
+   "Her 100 öğrenciden {oran} kişi girdiyse, bütün öğrencilerden kaç kişi girer?"
+  ],
+  "ucuncu_deneme": [
+   "Birlikte kuralım. {toplam} öğrenci = {bir_yuzde} tane 100 öğrenci.",
+   "Her 100 öğrenciden {oran} kişi girdi. {bir_yuzde} × {oran} kaç eder?",
+   "Şıklara yeniden bak."
+  ],
+  "yazan": "Çıra (Opus 5.5), 22.11.2026; seviye testi analizine göre (yuzdeyi-sayi-sandi)"
+ },
+ {
+  "id": "yuzde-gorev-tamam-01",
+  "konu": "yuzde-problem",
+  "konu_adi": "Yüzdelerle problem",
+  "kazanim": "MAT.6.1.7",
+  "zorluk": 2,
+  "adimlar": [
+   "iliski",
+   "hesap",
+   "hesap"
+  ],
+  "parametreler": {
+   "gorev": {
+    "degerler": [
+     "10",
+     "20",
+     "25",
+     "50"
+    ]
+   },
+   "biten": {
+    "min": 2,
+    "max": 45,
+    "adim": 1
+   }
+  },
+  "kisitlar": [
+   "biten < gorev",
+   "biten * 2 != gorev",
+   "biten * 100 / gorev != biten",
+   "100 / gorev != biten",
+   "biten * 100 / gorev != 100 - biten * 100 / gorev",
+   "100 - biten * 100 / gorev != biten",
+   "100 - biten * 100 / gorev != 100 / gorev"
+  ],
+  "turetilen": {
+   "yuzde": "biten * 100 / gorev",
+   "bir_gorev": "100 / gorev"
+  },
+  "hikaye": [
+   "Robot yarışmasında {gorev} görev var.",
+   "Kâşif'in robotu bunlardan {biten} tanesini başarıyla tamamladı."
+  ],
+  "istenen": "Robot görevlerin yüzde kaçını tamamladı?",
+  "vurgu": [
+   "{gorev} görev",
+   "{biten} tanesini"
+  ],
+  "cevap": "yuzde",
+  "birim": "",
+  "celdiriciler": [
+   {
+    "ifade": "biten",
+    "hata": "yuzdeyi-sayi-sandi"
+   },
+   {
+    "ifade": "100 - yuzde",
+    "hata": "istenen-farkli"
+   },
+   {
+    "ifade": "bir_gorev",
+    "hata": "ilk-adimda-durdu"
+   }
+  ],
+  "kisa_hali": "{gorev} görevin {biten} tanesi bitti. Yüzde kaçı bitti?",
+  "ipuclari": [
+   "Önce kesir olarak yaz: {gorev} görevin {biten} tanesi = {biten}/{gorev}.",
+   "Yüzde bulmak için kesrin paydasını 100 yap.",
+   "{gorev} kaç ile çarpılınca 100 olur? Payı da o sayıyla çarp."
+  ],
+  "ucuncu_deneme": [
+   "Birlikte kuralım. Tamamlanan kısım {biten}/{gorev}.",
+   "{gorev} × {bir_gorev} = 100. Payı da {bir_gorev} ile çarp.",
+   "Çıkan pay yüzdedir. Şıklara yeniden bak."
+  ],
+  "yazan": "Çıra (Opus 5.5), 22.11.2026; seviye testi analizine göre (kesir-yüzde köprüsü)"
+ },
+ {
+  "id": "yuzde-indirim-orani-01",
+  "konu": "yuzde-problem",
+  "konu_adi": "Yüzdelerle problem",
+  "kazanim": "MAT.6.1.7",
+  "zorluk": 3,
+  "adimlar": [
+   "iliski",
+   "hesap",
+   "hesap"
+  ],
+  "parametreler": {
+   "fiyat": {
+    "degerler": [
+     "200",
+     "300",
+     "400",
+     "500"
+    ]
+   },
+   "oran": {
+    "degerler": [
+     "20",
+     "60",
+     "75",
+     "80"
+    ]
+   }
+  },
+  "kisitlar": [
+   "indirim != 100 - oran",
+   "indirim != indirim * 100 / yeni",
+   "indirim != oran"
+  ],
+  "turetilen": {
+   "indirim": "fiyat * oran / 100",
+   "yeni": "fiyat - fiyat * oran / 100"
+  },
+  "hikaye": [
+   "Bir sensör setinin fiyatı {fiyat} TL idi.",
+   "İndirim gelince fiyatı {yeni} TL oldu."
+  ],
+  "istenen": "Sensör setinde yüzde kaç indirim yapıldı?",
+  "vurgu": [
+   "{fiyat} TL idi",
+   "{yeni} TL oldu"
+  ],
+  "cevap": "oran",
+  "birim": "",
+  "celdiriciler": [
+   {
+    "ifade": "indirim",
+    "hata": "yuzdeyi-sayi-sandi"
+   },
+   {
+    "ifade": "100 - oran",
+    "hata": "istenen-farkli"
+   },
+   {
+    "ifade": "indirim * 100 / yeni",
+    "hata": "yanlis-butun"
+   }
+  ],
+  "kisa_hali": "Fiyat {fiyat} TL'den {yeni} TL'ye indi. Yüzde kaç indirim?",
+  "ipuclari": [
+   "Önce kaç TL indirim yapıldığını bul.",
+   "Yüzde hangi bütüne göre hesaplanır: eski fiyata mı, yeni fiyata mı?",
+   "İndirimi eski fiyata oranla, sonra paydayı 100 yap."
+  ],
+  "ucuncu_deneme": [
+   "Birlikte kuralım. {fiyat} − {yeni} = kaç TL indirim?",
+   "İndirimi eski fiyata böl ve kesir olarak yaz.",
+   "Paydayı 100 yapınca pay yüzdedir. Şıklara yeniden bak."
+  ],
+  "yazan": "Çıra (Opus 5.5), 22.11.2026; seviye testi analizine göre (yanlış bütün)"
+ },
+ {
+  "id": "uzunluk-m-cm-cevir-01",
+  "konu": "uzunluk-birim",
+  "konu_adi": "Uzunluk ölçme birimleri",
+  "kazanim": "MAT.6.1.8",
+  "zorluk": 1,
+  "adimlar": [
+   "birim",
+   "hesap"
+  ],
+  "parametreler": {
+   "cm": {
+    "min": 105,
+    "max": 395,
+    "adim": 5
+   }
+  },
+  "kisitlar": [
+   "cm != 200",
+   "cm != 300"
+  ],
+  "turetilen": {
+   "m": "cm / 100"
+  },
+  "hikaye": [
+   "Kâşif'in metre şeridine göre robot kolunun kablosu {m} m uzunluğunda.",
+   "Kâşif bu uzunluğu santimetre olarak defterine yazacak."
+  ],
+  "istenen": "Kablo kaç cm uzunluğunda?",
+  "vurgu": [
+   "{m} m",
+   "santimetre olarak"
+  ],
+  "cevap": "cm",
+  "birim": "cm",
+  "celdiriciler": [
+   {
+    "ifade": "m",
+    "hata": "birim-donusturmedi"
+   },
+   {
+    "ifade": "cm / 10",
+    "hata": "birim-karisti"
+   },
+   {
+    "ifade": "cm * 10",
+    "hata": "birim-karisti"
+   }
+  ],
+  "max_ondalik": 2,
+  "kisa_hali": "Kablo {m} m. Kaç cm?",
+  "ipuclari": [
+   "Soru metreyi değil santimetreyi istiyor.",
+   "1 m kaç cm eder?",
+   "Metreden santimetreye geçerken sayı büyür mü küçülür mü?"
+  ],
+  "ucuncu_deneme": [
+   "Birlikte kuralım. 1 m = 100 cm.",
+   "{m} sayısını 100 ile çarp: virgül iki basamak sağa kayar.",
+   "Şıklara yeniden bak."
+  ],
+  "yazan": "Çıra (Opus 5.5), 22.11.2026; seviye testi analizine göre (birim-donusturmedi)"
+ },
+ {
+  "id": "uzunluk-vida-mm-01",
+  "konu": "uzunluk-birim",
+  "konu_adi": "Uzunluk ölçme birimleri",
+  "kazanim": "MAT.6.1.8",
+  "zorluk": 2,
+  "adimlar": [
+   "iliski",
+   "birim",
+   "hesap"
+  ],
+  "parametreler": {
+   "vida_mm": {
+    "min": 25,
+    "max": 45,
+    "adim": 5
+   },
+   "tahta_mm": {
+    "min": 8,
+    "max": 18,
+    "adim": 1
+   }
+  },
+  "kisitlar": [
+   "vida_mm - tahta_mm >= 10"
+  ],
+  "turetilen": {
+   "vida": "vida_mm / 10"
+  },
+  "hikaye": [
+   "Kâşif {vida} cm uzunluğunda bir vidayı tahtaya tam olarak vidaladı.",
+   "Tahtanın kalınlığı {tahta_mm} mm."
+  ],
+  "istenen": "Vida tahtanın arkasından kaç mm dışarı çıkar?",
+  "vurgu": [
+   "{vida} cm",
+   "{tahta_mm} mm"
+  ],
+  "cevap": "vida_mm - tahta_mm",
+  "birim": "mm",
+  "celdiriciler": [
+   {
+    "ifade": "vida - tahta_mm / 10",
+    "hata": "istenen-birim-farkli"
+   },
+   {
+    "ifade": "vida_mm + tahta_mm",
+    "hata": "islem-secimi"
+   },
+   {
+    "ifade": "vida_mm * 10 - tahta_mm",
+    "hata": "birim-karisti"
+   }
+  ],
+  "kisa_hali": "Vida {vida} cm, tahta {tahta_mm} mm. Vida kaç mm dışarı çıkar?",
+  "ipuclari": [
+   "Birimlere bak: vida cm, tahta mm. Soru hangi birimi istiyor?",
+   "1 cm kaç mm eder?",
+   "Önce vidayı mm'ye çevir, sonra tahtanın kalınlığını çıkar."
+  ],
+  "ucuncu_deneme": [
+   "Birlikte kuralım. 1 cm = 10 mm. {vida} cm kaç mm eder?",
+   "Vidanın tahtanın içinde kalan kısmı {tahta_mm} mm. Çıkar.",
+   "Şıklara yeniden bak."
+  ],
+  "yazan": "Çıra (Opus 5.5), 22.11.2026; seviye testi analizine göre (birim-donusturmedi)"
+ },
+ {
   "id": "ondalik-basamak-powerbank-01",
   "konu": "ondalik-basamak",
   "konu_adi": "Ondalık gösterim ve basamak değeri",

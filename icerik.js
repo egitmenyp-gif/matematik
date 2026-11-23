@@ -172,4 +172,132 @@ window.MATEMATIK_ICERIK = { KONULAR: [
   "hata_turleri": "yanlış şıkların hata türleri sayılır ve öğrenci kartının 'takildigi' alanına ilk veri olarak girer",
   "haftalik": "haftalık sınav aynı yapıda, aynı konular, FARKLI tohumla (aynı soru tekrar gelmez); konu konu karşılaştırma veli raporundaki ilerleme grafiğinin verisi"
  }
-} };
+}, ANLATIMLAR: [
+ {
+  "konu": "kesir-anlami",
+  "baslik": "Kesir: bütünün parçası",
+  "ekranlar": [
+   {
+    "metin": "Bir devre kartını 4 eşit parçaya ayırdığını düşün. Her parça, kartın 4'te 1'idir.",
+    "resim": {
+     "tip": "kesir-cubugu",
+     "parca": 4,
+     "boyali": 1
+    }
+   },
+   {
+    "metin": "3 parçayı lehimlersen kartın 4'te 3'ünü lehimlemiş olursun. Bunu 3/4 diye yazarız.",
+    "resim": {
+     "tip": "kesir-cubugu",
+     "parca": 4,
+     "boyali": 3,
+     "etiket": "3/4"
+    }
+   },
+   {
+    "metin": "Alttaki sayıya payda denir: bütün kaç eşit parçaya ayrıldı? Üstteki sayıya pay denir: kaç parçayı aldık?",
+    "resim": {
+     "tip": "kesir-cubugu",
+     "parca": 4,
+     "boyali": 3,
+     "etiket": "3/4"
+    }
+   },
+   {
+    "metin": "Dikkat: payda her zaman BÜTÜNDÜR. 3 LED yanıyor, 2 LED sönükse yananlar 3/5'tir, 3/2 değil. Çünkü bütün 5 LED'dir.",
+    "resim": {
+     "tip": "kesir-cubugu",
+     "parca": 5,
+     "boyali": 3,
+     "etiket": "3/5"
+    }
+   }
+  ]
+ },
+ {
+  "konu": "uzunluk-birim",
+  "baslik": "Uzunluk birimleri: m, cm, mm",
+  "ekranlar": [
+   {
+    "metin": "Metre şeridine bak: 1 metrede 100 santimetre, 1 santimetrede 10 milimetre var.",
+    "resim": {
+     "tip": "birim-merdiven"
+    }
+   },
+   {
+    "metin": "Büyük birimden küçük birime geçerken sayı büyür: 2 m = 200 cm. Küçükten büyüğe geçerken sayı küçülür: 300 cm = 3 m.",
+    "resim": {
+     "tip": "birim-merdiven"
+    }
+   },
+   {
+    "metin": "Ondalıkta da aynı kural: 1,5 m = 150 cm. 100 ile çarpınca virgül iki basamak sağa kayar."
+   },
+   {
+    "metin": "En önemlisi: toplamadan ya da çıkarmadan önce bütün uzunlukları AYNI birime çevir. 2 m ile 30 cm'yi toplarken 2 + 30 yapılmaz: 200 + 30 = 230 cm."
+   }
+  ]
+ },
+ {
+  "konu": "kesir-problem",
+  "baslik": "Bir şeyin kesri kadarı",
+  "ekranlar": [
+   {
+    "metin": "Işık dizisinde 15 LED var, 2/5'i yanıyor. Bu, 2 LED yanıyor demek değildir! 2/5 bir sayı değil, bütünün bir parçasıdır.",
+    "resim": {
+     "tip": "grup",
+     "toplam": 15,
+     "payda": 1,
+     "boyali": 0
+    }
+   },
+   {
+    "metin": "Payda 5: 15 LED'i 5 eşit gruba ayır. Her grupta 15 ÷ 5 = 3 LED olur.",
+    "resim": {
+     "tip": "grup",
+     "toplam": 15,
+     "payda": 5,
+     "boyali": 0
+    }
+   },
+   {
+    "metin": "Pay 2: bu gruplardan 2 tanesi yanıyor. 2 × 3 = 6 LED yanıyor.",
+    "resim": {
+     "tip": "grup",
+     "toplam": 15,
+     "payda": 5,
+     "boyali": 2
+    }
+   },
+   {
+    "metin": "Kısaca: bütünü paydaya böl, bir grubu bulursun. Sonra payla çarp. Parça verilip bütün sorulursa tersini yap: parçayı paya böl, paydayla çarp."
+   }
+  ]
+ },
+ {
+  "konu": "yuzde-problem",
+  "baslik": "Yüzde: her 100'de kaç",
+  "ekranlar": [
+   {
+    "metin": "%30 demek: her 100 taneden 30 tanesi. Yüzde, paydası 100 olan bir kesirdir: %30 = 30/100.",
+    "resim": {
+     "tip": "yuz-kare",
+     "boyali": 30
+    }
+   },
+   {
+    "metin": "100 kişinin %30'u 30 kişidir. Ama 200 kişinin %30'u 30 değildir! 200'de iki tane 100 var: 30 + 30 = 60 kişi."
+   },
+   {
+    "metin": "Kesirden yüzdeye: 20 görevin 13'ü bitti, yani 13/20. Paydayı 100 yap: 20 × 5 = 100, payı da 5 ile çarp: 13 × 5 = 65. Görevlerin %65'i bitti.",
+    "resim": {
+     "tip": "yuz-kare",
+     "boyali": 65
+    }
+   },
+   {
+    "metin": "Dikkat: yüzde her zaman BÜTÜNE göre hesaplanır. %20 indirim, eski fiyatın her 100 TL'sinden 20 TL düşmek demektir; 20 TL düşmek demek değildir."
+   }
+  ]
+ }
+] };
