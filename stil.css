@@ -66,6 +66,9 @@ button:disabled{cursor:default}
 .d{flex:1;text-align:center;border:1.5px solid var(--notr);border-radius:14px;padding:10px 6px;font-size:15px;color:var(--sohbet-metin)}
 .d:not(:disabled):hover{background:var(--sohbet-balon)}
 .d:disabled{opacity:.45}
+.d.oner{border-color:var(--vurgu-sekil);box-shadow:0 0 0 3px var(--vurgu);animation:oner 1.6s ease-in-out 3}
+@keyframes oner{50%{box-shadow:0 0 0 6px var(--vurgu)}}
+@media (prefers-reduced-motion:reduce){.d.oner{animation:none}}
 .perde{position:fixed;inset:0;background:rgba(30,35,48,.86);display:grid;place-items:center;z-index:10;padding:24px}
 .perde[hidden]{display:none}
 .perde .kutu-b{background:var(--kart);border-radius:28px;padding:36px 44px;max-width:560px;text-align:center}

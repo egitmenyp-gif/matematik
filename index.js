@@ -16,6 +16,7 @@
     cozum: 'Birlikte kuralım. ',
     digerKonu: 'Şimdi bu sorunun içindeyiz. Takıldıysan İpucu ya da Anlamadım düğmesine bas.',
     ipucuBitti: 'Başka ipucum kalmadı. Anlamadım düğmesine basarsan başka türlü anlatırım.',
+    ipucuOner: 'Takılmak normal, acele yok. İstersen küçük bir ipucu var: 💡 İpucu düğmesine bas.',
     anlamadim: 'Tamam, başka türlü anlatayım. Önce hangi sayıları bildiğimizi say, sonra neyin sorulduğuna bak: ',
     bugunBitti: 'Bugünlük bitti. Yarın görüşürüz!',
     sinavNotr: 'Teşekkürler, şimdi şıklara bakalım.',
@@ -144,6 +145,7 @@
 
   function istenenAsamasi() {
     model.asama = 'istenen';
+    hareket();   // okuma süresi takılma sayılmaz; sayaç soru açıldığında başlar
     mesaj(SABIT.istenen);
     yazmaAc(true, 'Burada ne isteniyor? Kendi cümlenle yaz…');
     dugmeler(true);
@@ -169,7 +171,8 @@
     q = soru;
     sinavMi = !!(q.sinav && q.mod && q.mod !== 'ders');
     $('dIpucu').hidden = $('dKisa').hidden = sinavMi;   // sınavda ipucu ve kısa hâl düğmeleri görünmez
-    model = { asama: 'okuma', cumle: 0, okumaBas: 0, okumaSn: 0, ipucu: 0, yanlis: 0, istenenMetin: '', anladi: null, kisaDeneme: 0, sayiUyari: 0, soruBas: Date.now() };
+    model = { asama: 'okuma', cumle: 0, okumaBas: 0, okumaSn: 0, ipucu: 0, yanlis: 0, istenenMetin: '', anladi: null, kisaDeneme: 0, sayiUyari: 0, soruBas: Date.now(), sonHareket: Date.now(), oneri: false, oneriSay: 0 };
+    $('dIpucu').classList.remove('oner');
     $('etiket').textContent = sinavMi ? q.sinav.baslik + ' · Soru ' + q.sinav.n + '/' + q.sinav.toplam : 'Soru ' + (q.sira || '') + ' · ' + (q.konu_adi || '');
     $('hikaye').textContent = '';
     $('sekil').innerHTML = Sekil.ciz(q.sekil, durum.takma_ad);
@@ -194,6 +197,7 @@
 
   // ---- Çocuğun yazdığı ----
   function gonder(metin) {
+    hareket();
     metin = metin.trim().slice(0, 300);
     if (!metin) { if (model.asama === 'istenen') mesaj(SABIT.bosIstenen); return; }
     mesaj(metin, 'c');
@@ -226,6 +230,7 @@
 
   function cevapVer(girdi, dugme) {
     if (model.asama !== 'cevap') return;
+    hareket();
     var istek = { sablon_id: q.sablon_id, tohum: q.tohum, yanlis_sayisi: model.yanlis, okuma_sn: model.okumaSn, sure_sn: Math.round((Date.now() - model.soruBas) / 1000) };
     if (girdi.sik) istek.sik = girdi.sik; else istek.yazi = girdi.yazi;
     arka.cevapla(istek).then(function (c) {
@@ -285,14 +290,35 @@
     $('sonraki').hidden = false;
   }
 
+  // ---- İpucu önerisi (kurucu onayı 23.11 21.04; ANALIZ-2026-11-22 "Veli cevabı"): çocuk bir soruda uzun süre hiçbir şeye
+  // dokunmazsa düğme kendini nazikçe önerir; cevap ya da ipucu verilmez, yalnız düğme hatırlatılır. Sınavda ipucu yok, öneri de yok.
+  // Eşik saniye; ?oneri=N yalnız test içindir. Soru başına en çok 2 kez; her hareket sayacı sıfırlar.
+  var IPUCU_ONERI_SN = Number(new URLSearchParams(location.search).get('oneri')) || 240;
+  function hareket() {
+    model.sonHareket = Date.now(); model.oneri = false;
+    $('dIpucu').classList.remove('oner');
+  }
+  function ipucuOneriDenetle() {
+    if (!q || sinavMi || model.oneri || model.oneriSay >= 2) return;
+    if (model.asama !== 'istenen' && model.asama !== 'cevap') return;
+    if ($('dIpucu').disabled || $('dIpucu').hidden || !$('perde').hidden || !$('anlatim').hidden || tur) return;
+    if (model.ipucu >= (q.ipuclari || []).length) return;
+    if (Date.now() - model.sonHareket < IPUCU_ONERI_SN * 1000) return;
+    model.oneri = true; model.oneriSay++;
+    mesaj(SABIT.ipucuOner);
+    $('dIpucu').classList.add('oner');
+  }
+
   // ---- Düğmeler ----
   function ipucuIste() {
+    hareket();
     var liste = q.ipuclari || [];
     if (model.ipucu >= liste.length) { mesaj(SABIT.ipucuBitti); return; }
     mesaj('💡 ' + liste[model.ipucu]);
     model.ipucu++;
   }
   function anlamadim() {
+    hareket();
     if (sinavMi) {   // sınavda yalnız soruyu yeniden gösterir; konu anlatmaz, model çağrılmaz
       if (arka.anlamadim) arka.anlamadim({ sablon_id: q.sablon_id, tohum: q.tohum }, 0);
       mesaj('Soruyu bir daha okuyalım: ' + tumCumleler().join(' '));
@@ -303,6 +329,7 @@
     arka.anlamadim({ sablon_id: q.sablon_id, tohum: q.tohum }, model.yanlis).then(function (c) { if (c && c.egitmen) mesaj(c.egitmen); else yedek(); }, yedek);
   }
   function kisaGoster() {
+    hareket();
     if (!q.kisa_hali) { mesaj('Bu soru için kısa hâl yok.'); return; }
     mesaj('✏️ ' + q.kisa_hali);
   }
@@ -444,6 +471,7 @@
       $('ad').firstChild.textContent = 'Merhaba ' + durum.takma_ad + ' ';
       zamanYaz(); setInterval(zamanYaz, 30000);
       setInterval(function () { if (arka) sayacYaz(); }, 30000);
+      setInterval(ipucuOneriDenetle, Math.min(5000, IPUCU_ONERI_SN * 500));
       perde('Merhaba ' + durum.takma_ad + '!', 'Ben yapay zekâ eğitmeninim. Bir insan değilim, bir bilgisayar programıyım. Sana matematik sorularını okumayı ve anlamayı öğretmek için buradayım.', 'Başla', function () { tamEkranAc(); yeniSoru(); });   // tam ekran yalnız tıklamayla açılabilir (tarayıcı kuralı)
     });
   }
