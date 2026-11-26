@@ -5,6 +5,20 @@
 var Arka = (function () {
   'use strict';
 
+  // "Burada ne isteniyor?" soru kelimesi kuralı: apps-script/Kod.gs istenenAnladi ile AYNI (testle eşleştirilir).
+  function istenenAnladi(metin) {
+    var ham = String(metin === undefined || metin === null ? '' : metin);
+    if (!ham.trim()) return 'hayir';
+    var kel = ham.toLocaleLowerCase('tr').split(/[^a-zçğıöşüâîû0-9]+/).filter(function (x) { return x; });
+    for (var i = 0; i < kel.length; i++) {
+      var k = kel[i];
+      if (/^ka[cç]/.test(k) || /^hangi/.test(k)) return 'evet';
+      if (k === 'ne' || k === 'nedir' || k === 'neyi' || k === 'neye' || k === 'neyin' || k === 'nereye' || k === 'nerede') return 'evet';
+      if (k === 'kim' || k === 'kimin' || k === 'kimi' || k === 'kime' || k === 'kimden') return 'evet';
+    }
+    return 'kismen';
+  }
+
   function deneme(Motor, sablonlar, ayar) {
     ayar = ayar || {};
     var blokDk = ayar.blok_dk || 35, molaDk = ayar.mola_dk || 10, gunlukDk = ayar.gunluk_dk || 120;
@@ -43,8 +57,7 @@ var Arka = (function () {
       },
       anla: function (metin) {
         if (sinavListe) return Promise.resolve({ anladi: 'evet', egitmen: NOTR });
-        var kelime = String(metin || '').trim().split(/\s+/).filter(Boolean).length;
-        return Promise.resolve({ anladi: kelime >= 3 ? 'evet' : kelime >= 1 ? 'kismen' : 'hayir', egitmen: null });
+        return Promise.resolve({ anladi: istenenAnladi(metin), egitmen: null });
       },
       cevapla: function (g) {
         if (sinavListe) {   // yalnız "Kaydettim": doğru/yanlış, doğru şık ve hata türü dönmez
@@ -101,6 +114,6 @@ var Arka = (function () {
     };
   }
 
-  return { deneme: deneme, api: api };
+  return { deneme: deneme, api: api, istenenAnladi: istenenAnladi };
 })();
 if (typeof module !== 'undefined' && module.exports) module.exports = Arka;

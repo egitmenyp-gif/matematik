@@ -8,7 +8,7 @@
     giris: 'Önce hikâyeyi oku. Önemli gördüğün yerlere dokun, işaretlensin.',
     istenen: 'Şimdi söyle bakalım: burada ne isteniyor? Kendi cümlenle yaz.',
     bosIstenen: 'Önce ne istendiğini kendi cümlenle yaz, sonra şıklar açılır.',
-    kisa: 'Biraz daha açar mısın? Bir iki kelime daha ekle.',
+    istenenHatirlat: 'Güzel. Şimdi sorunun ne sorduğunu yaz. Örneğin: "Kaç cm kablo kaldığını soruyor."',
     anladi: 'Tam olarak bu! 👏 Şimdi şıklara bak.',
     kismen: 'Şıkları açıyorum. Soruya bir daha bakarak seç.',
     dogru: '✓ Doğru! Aferin sana.',
@@ -208,9 +208,11 @@
       model.istenenMetin = metin;
       arka.anla(metin, { sablon_id: q.sablon_id, tohum: q.tohum }).then(function (c) {
         var anladi = c && c.anladi ? c.anladi : 'kismen';
-        if (!sinavMi && anladi !== 'evet' && model.kisaDeneme < 1 && Motor.oku(metin) === null && metin.split(/\s+/).length < 3) {
+        // Soru kelimesi yoksa (kaç, hangi, ne kadar...) BİR kez nazikçe hatırlat; ikinci yazışta geçilir. Cevabın doğruluğu hakkında bir şey söylemez; sınavda yok.
+        // Yalın sayı için ayrı hatırlatma yukarıda (sayiUyari); ikisi üst üste çıkmaz.
+        if (!sinavMi && anladi !== 'evet' && model.kisaDeneme < 1 && Motor.oku(metin) === null) {
           model.kisaDeneme++;
-          mesaj((c && c.egitmen) || SABIT.kisa);
+          mesaj((c && c.egitmen) || SABIT.istenenHatirlat);
           return;
         }
         model.anladi = anladi;
@@ -229,11 +231,13 @@
   }
 
   function cevapVer(girdi, dugme) {
-    if (model.asama !== 'cevap') return;
+    if (model.asama !== 'cevap' || model.gonderiyor) return;   // sonuç gelene kadar ikinci gönderim gitmez (çift tıklama)
+    model.gonderiyor = true;
     hareket();
     var istek = { sablon_id: q.sablon_id, tohum: q.tohum, yanlis_sayisi: model.yanlis, okuma_sn: model.okumaSn, sure_sn: Math.round((Date.now() - model.soruBas) / 1000) };
     if (girdi.sik) istek.sik = girdi.sik; else istek.yazi = girdi.yazi;
     arka.cevapla(istek).then(function (c) {
+      model.gonderiyor = false;
       var gecen = Math.round((Date.now() - model.soruBas) / 1000);
       if (!c.gecerli) { mesaj('Bunu cevap olarak okuyamadım. Bir sayı yazar mısın?'); return; }
       if (sinavMi) { sinavCevabi(c, dugme); return; }   // sınavda sunucu cevabı kendisi yazar; ekran doğru/yanlış göstermez
@@ -265,7 +269,7 @@
       var ip2 = (q.ipuclari || [])[Math.min(model.yanlis - 1, (q.ipuclari || []).length - 1)];
       model.ipucu = Math.max(model.ipucu, model.yanlis);
       mesaj(c.egitmen || (SABIT.yanlis + (ip2 || '')), 'tekrar');
-    });
+    }, function (hata) { model.gonderiyor = false; throw hata; });
   }
   // Sınav cevabı: yalnız nötr "Kaydettim". Renk, ipucu, 2. deneme yok; şıklar kilitlenir.
   function sinavCevabi(c, dugme) {
